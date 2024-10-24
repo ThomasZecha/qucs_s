@@ -252,7 +252,7 @@ void Component::paint(QPainter *p) {
     QRect text_br{tx, ty, 0, 0};
 
     if (showName) {
-        p->drawText(tx, ty, 0, 0, Qt::TextDontClip, Name, &text_br);
+        p->drawText(tx, ty, 1, 1, Qt::TextDontClip, Name, &text_br);
     }
 
     for (auto *prop : Props) {
@@ -763,7 +763,7 @@ QString Component::spice_netlist(bool) {
 }
 
 QString Component::va_code() {
-    return QString(""); // ignore if not implemented
+    return QString(); // ignore if not implemented
 }
 
 // -------------------------------------------------------
@@ -772,7 +772,7 @@ QString Component::getNetlist() {
         case COMP_IS_ACTIVE:
             return netlist();
         case COMP_IS_OPEN:
-            return QString("");
+            return QString();
     }
 
     // Component is shortened.
@@ -795,7 +795,7 @@ QString Component::getSpiceNetlist(bool isXyce) {
             s.replace(" gnd ", " 0 ");
             return s;
         case COMP_IS_OPEN:
-            return QString("");
+            return QString();
     }
 
     // Component is shortened.
@@ -820,16 +820,16 @@ QString Component::getVerilogACode() {
             return s;
         case COMP_IS_OPEN:
         default:
-            return QString("");
+            return QString();
     }
 }
 
 QString Component::getExpression(bool) {
-    return QString("");
+    return QString();
 }
 
 QString Component::getEquations(QString, QStringList &) {
-    return QString("");
+    return QString();
 }
 
 QStringList Component::getExtraVariables() {
@@ -837,35 +837,35 @@ QStringList Component::getExtraVariables() {
 }
 
 QString Component::getProbeVariable(bool) {
-    return QString("");
+    return QString();
 }
 
 QString Component::getSpiceModel() {
-    return QString("");
+    return QString();
 }
 
 QString Component::getNgspiceBeforeSim(QString sim, int lvl) {
     Q_UNUSED(sim) // To suppress warning
     Q_UNUSED(lvl)
-    return QString("");
+    return QString();
 }
 
 QString Component::getNgspiceAfterSim(QString sim, int lvl) {
     Q_UNUSED(sim) // To suppress warning
     Q_UNUSED(lvl)
-    return QString("");
+    return QString();
 }
 
 // -------------------------------------------------------
 QString Component::verilogCode(int) {
-    return QString("");   // no digital model
+    return QString();   // no digital model
 }
 
 // -------------------------------------------------------
 QString Component::get_Verilog_Code(int NumPorts) {
     switch (isActive) {
         case COMP_IS_OPEN:
-            return QString("");
+            return QString();
         case COMP_IS_ACTIVE:
             return verilogCode(NumPorts);
     }
@@ -882,14 +882,14 @@ QString Component::get_Verilog_Code(int NumPorts) {
 
 // -------------------------------------------------------
 QString Component::vhdlCode(int) {
-    return QString("");   // no digital model
+    return QString();   // no digital model
 }
 
 // -------------------------------------------------------
 QString Component::get_VHDL_Code(int NumPorts) {
     switch (isActive) {
         case COMP_IS_OPEN:
-            return QString("");
+            return QString();
         case COMP_IS_ACTIVE:
             return vhdlCode(NumPorts);
     }
@@ -1787,7 +1787,7 @@ Component *getComponentFromName(QString &Line, Schematic *p) {
 
     if (!c) {
         /// \todo enable user to load partial schematic, skip unknown components
-        if (QucsMain != 0) {
+        if (QucsMain != nullptr) {
             QMessageBox *msg = new QMessageBox(QMessageBox::Warning, QObject::tr("Warning"),
                                                QObject::tr("Format Error:\nUnknown component!\n"
                                                            "%1\n\n"

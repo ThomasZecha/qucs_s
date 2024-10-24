@@ -400,7 +400,7 @@ QString Ngspice::getParentSWPscript(Component *pc_swp, QString sim, bool before,
             }
         }
     }
-    return QString("");
+    return QString();
 }
 
 /*!
@@ -486,7 +486,7 @@ void Ngspice::slotSimulate()
     QString ngsp_cmd = cmd_args.at(0);
     cmd_args.removeAt(0);
     SimProcess->start(ngsp_cmd,cmd_args);
-    if (QucsMain)
+    if (QucsMain != nullptr)
     emit started();
 }
 

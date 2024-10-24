@@ -154,7 +154,7 @@ void SpiceFile::createSymbol()
 QString SpiceFile::netlist()
 {
   if(Props.at(1)->Value.isEmpty())
-    return QString("");  // no ports, no subcircuit instance
+    return QString();  // no ports, no subcircuit instance
 
   QString s = "Sub:"+Name;   // SPICE netlist is subcircuit
   for (Port *pp : Ports)
@@ -388,7 +388,7 @@ bool SpiceFile::recreateSubNetlist(QString *SpiceFile, QString *FileName)
   (*filstream) << NetText;
 
   // only interact with the GUI if it was launched
-  if (QucsMain) {
+  if (QucsMain != nullptr) {
     QucsMain->statusBar()->showMessage(tr("Converting SPICE file \"%1\".").arg(*SpiceFile), 2000);
   }
   else

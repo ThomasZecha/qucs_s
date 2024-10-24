@@ -53,9 +53,9 @@ void EllipseArc::paint(QPainter *painter) {
     painter->drawArc(cx, cy, x2, y2, Angle, ArcLen);
 
     misc::draw_resize_handle(painter, QPoint{cx, cy});
-    misc::draw_resize_handle(painter, QPoint{cx, y2});
-    misc::draw_resize_handle(painter, QPoint{x2, cy});
-    misc::draw_resize_handle(painter, QPoint{x2, y2});
+    misc::draw_resize_handle(painter, QPoint{cx, cy + y2});
+    misc::draw_resize_handle(painter, QPoint{cx + x2, cy});
+    misc::draw_resize_handle(painter, QPoint{cx + x2, cy + y2});
   }
   painter->restore();
 }
