@@ -31,7 +31,6 @@ public:
 
 protected:
   QString spice_netlist(spicecompat::SpiceDialect dialect = spicecompat::SPICEDefault);
-
 };
 
 #endif
