@@ -57,6 +57,14 @@
 #include "MESFET_SPICE.h"
 #include "PMF_MESFET_SPICE.h"
 
+//IHP PDK elements
+
+#include "R_IHP.h"
+#include "C_IHP.h"
+#include "MOS_IHP.h"
+#include "BJT_IHP.h"
+#include "DIODE_IHP.h"
+
 // XSPICE analogue blocks
 #include "Icouple.h"
 #include "core.h"

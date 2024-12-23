@@ -253,12 +253,31 @@ REGISTER_COMP_2 (QObject::tr("microelectronics"),val,inf1,inf2)
 #define REGISTER_QUCS_3(val,inf1,inf2,inf3) \
   REGISTER_COMP_3 (QObject::tr("Qucs legacy devices"),val,inf1,inf2,inf3)
 
+// IHP COmponent list
+#define REGISTER_IHP_1(val) \
+  REGISTER_COMP_1 (QObject::tr("IHP PDK Components"),val)
+#define REGISTER_IHP_2(val,inf1,inf2) \
+  REGISTER_COMP_2 (QObject::tr("IHP PDK Components"),val,inf1,inf2)
 // This function has to be called once at application startup.  It
 // registers every component available in the application.  Put here
 // any new component.
 void Module::registerModules (void) {
   unregisterModules();
 
+  REGISTER_IHP_1 (R_IHP);
+  REGISTER_IHP_2 (R_IHP,info_Rppd,info_Rsil);
+  REGISTER_IHP_2 (R_IHP,info_Rptap1,info_Rntap1);
+  REGISTER_IHP_2 (MOS_IHP,info,info_hv);
+  REGISTER_IHP_2 (MOS_IHP,info_pmos,info_hv_pmos);
+  REGISTER_IHP_1 (BJT_IHP);
+  REGISTER_IHP_2 (BJT_IHP,info_l,info_v);
+  REGISTER_IHP_1 (C_IHP);
+  REGISTER_IHP_1 (DIODE_IHP);
+
+  REGISTER_LUMPED_2 (Resistor, info, info_us);
+  REGISTER_LUMPED_1 (Capacitor);
+  REGISTER_LUMPED_1 (Inductor);
+  REGISTER_LUMPED_1 (IndQ);
   REGISTER_LUMPED_2 (Resistor, info, info_us);
   REGISTER_LUMPED_1 (Capacitor);
   REGISTER_LUMPED_1 (Inductor);
@@ -663,7 +682,7 @@ Category::~Category () {
 QStringList Category::getCategories (void) {
   QStringList res;
   QList<Category *>::const_iterator it;
-  for (it = Category::Categories.constBegin(); 
+  for (it = Category::Categories.constBegin();
        it != Category::Categories.constEnd(); it++) {
     res.append ((*it)->Name);
   }

@@ -69,7 +69,15 @@ sp_sens_xyce.cpp
 sp_sens_tr_xyce.cpp
 sp_spectrum.cpp
 
-# 
+# IHP PDK elements
+R_IHP.cpp
+C_IHP.cpp
+MOS_IHP.cpp
+BJT_IHP.cpp
+DIODE_IHP.cpp
+
+# SPICE simulations list
+#
 # Qucs-S new components cpp list
 #
 
@@ -161,7 +169,7 @@ sp_sens_tr_xyce.h
 xyce_script.h
 sp_spectrum.h
 
-# 
+#
 # Qucs-S new components h list
 #
 
