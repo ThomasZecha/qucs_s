@@ -173,10 +173,9 @@ void MOS_IHP::createSymbol()
 }
 
 
-QString MOS_IHP::spice_netlist(bool isXyce, bool isCdl /* = false */)
+QString MOS_IHP::spice_netlist(spicecompat::SpiceDialect dialect /* = spicecompat::SPICEDefault */)
 {
-    Q_UNUSED(isXyce);
-    Q_UNUSED(isCdl);
+    Q_UNUSED(dialect);
 
     QString s = spicecompat::check_refdes(Name, Props.at(0)->Value);
     for (Port *p1 : Ports)
@@ -224,6 +223,6 @@ QString MOS_IHP::spice_netlist(bool isXyce, bool isCdl /* = false */)
 
 QString MOS_IHP::cdl_netlist()
 {
-    return spice_netlist(false, true);
+    return spice_netlist(spicecompat::CDL);
 }
 

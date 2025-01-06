@@ -159,10 +159,9 @@ QString R_IHP::netlist()
     return QString("");
 }
 
-QString R_IHP::spice_netlist(bool isXyce, bool isCdl /* = false */)
+QString R_IHP::spice_netlist(spicecompat::SpiceDialect dialect /* = spicecompat::SPICEDefault */)
 {
-    Q_UNUSED(isXyce);
-    Q_UNUSED(isCdl);
+    Q_UNUSED(dialect);
 
     QString ltr = getProperty("Letter")->Value;
     QString s = spicecompat::check_refdes(Name, ltr);
@@ -200,5 +199,5 @@ QString R_IHP::spice_netlist(bool isXyce, bool isCdl /* = false */)
 
 QString R_IHP::cdl_netlist()
 {
-    return spice_netlist(false, true);
+    return spice_netlist(spicecompat::CDL);
 }
