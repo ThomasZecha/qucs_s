@@ -44,6 +44,7 @@
 #include <QDebug>
 #include <QLineSeries>
 
+#include <utility>
 
 Qucs_S_SPAR_Viewer::Qucs_S_SPAR_Viewer()
 {
@@ -3410,7 +3411,7 @@ void Qucs_S_SPAR_Viewer::dropEvent(QDropEvent *event)
     QList<QUrl> urls = event->mimeData()->urls();
     QStringList fileList;
 
-    for (const QUrl &url : qAsConst(urls)) {
+    for (const QUrl &url : std::as_const(urls)) {
         if (url.isLocalFile()) {
             fileList << url.toLocalFile();
         }
